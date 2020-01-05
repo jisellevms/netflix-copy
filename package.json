@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
+    "android": "node node_modules/react-native/local-cli/cli.js run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
@@ -11,7 +11,10 @@
   },
   "dependencies": {
     "react": "16.9.0",
-    "react-native": "0.61.5"
+    "react-native": "0.61.0",
+    "react-native-best-viewpager": "^1.0.1",
+    "react-native-swiper": "^1.6.0-nightly.5",
+    "react-native-viewpager": "^0.2.13"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
