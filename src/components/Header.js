@@ -3,30 +3,32 @@ import { Text, View, StyleSheet, TouchableWithoutFeedback, Image } from 'react-n
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Logo from '../images/netflix.png';
 
-const Header = props => (
-    <View style={style.container}>
-        <TouchableWithoutFeedback onPress={() => props.toggle()}>
-            <Icon name='dehaze' color='white' size={25} />
-        </TouchableWithoutFeedback>
-        <Image resizeMethod='auto' source={Logo} style={style.logo}/>
-        <Icon name='search' color='white' size={25} />
-    </View>
-)
-
+export default function Header({ navigation, toggle }) {
+    return (
+        <View style={style.container}>
+            <TouchableWithoutFeedback onPress={() => toggle()}>
+                <Icon name='dehaze' color='white' size={25} />
+            </TouchableWithoutFeedback>
+            <Image resizeMethod='auto' source={Logo} style={style.logo} />
+            <TouchableWithoutFeedback onPress={() => navigation.navigate('Search')}>
+                <Icon name='search' color='white' size={25} />
+            </TouchableWithoutFeedback>
+        </View>
+    )
+}
 
 const style = StyleSheet.create({
-    container:{
+    container: {
         flexDirection: 'row',
         height: 50,
         alignItems: 'center',
         justifyContent: 'space-between',
         backgroundColor: 'black',
-        marginHorizontal: 15
+        paddingHorizontal: 15
     },
-    logo:{
+    logo: {
         width: 120,
         height: 32
     }
 })
 
-export default Header;

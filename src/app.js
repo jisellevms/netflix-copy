@@ -7,7 +7,7 @@ import SidMenu from 'react-native-side-menu';
 import Menu from './components/Menu';
 
 
-class App extends Component {
+export default class App extends Component {
 
     constructor(props) {
         super(props)
@@ -28,28 +28,28 @@ class App extends Component {
 
     render() {
         return (
-            <View style={style.container}>
+            <>
                 <SidMenu
                     menu={<Menu />}
                     isOpen={this.state.isOpen}
                     onChange={(isOpen) => this.updateMenu(isOpen)}
                 >
-                    <Header toggle={this.toggle.bind(this)} />
+                    <View style={style.container}>
+                    <Header navigation={this.props.navigation} toggle={this.toggle.bind(this)} />
                     <ScrollView>
                         <Slide />
-                        <List />
+                        <List navigation={this.props.navigation}/>
                     </ScrollView>
+                    </View>
                 </SidMenu>
-            </View>
+            </>
         )
     }
 }
 
 const style = StyleSheet.create({
     container: {
-        flex: 1,
+        flex:1,
         backgroundColor: 'black'
     }
 })
-
-export default App;
