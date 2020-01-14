@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, TouchableHighlight, TouchableWithoutFeedback, ScrollView, Dimensions, ImageBackground } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import TabsEpisodes from './TabsEpisodes';
 
 const { width, height } = Dimensions.get('window');
 
@@ -60,6 +61,7 @@ export default class Details extends Component {
                         <Text style={[style.text, style.light]}>Compartilhar</Text>
                     </View>
                 </View>
+                <TabsEpisodes />
             </ScrollView>
         )
     }
