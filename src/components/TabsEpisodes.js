@@ -1,35 +1,38 @@
 import React, { Component, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import Episodes from './Episodes';
 import Trailers from './Trailers';
+import Tabs from 'react-native-tabs';
 
-export default function TabsEpisodes() {
-    const [index, setIndex] = useState(0);
-    const [routes] = useState([
-        { key: 'first', title: 'First' },
-        { key: 'second', title: 'Second' },
-    ])
+export default class TabsEpisodes extends Component {
 
+    state = {
+        page: <Episodes />
+    };
 
-    const renderScene = SceneMap({
-        first: Episodes,
-        second: Trailers,
-    });
-
-    return (
-        <TabView
-            style={style.container}
-            navigationState={{ index, routes }}
-            onIndexChange={setIndex}
-            renderScene={renderScene}
-        />
-    )
+    render() {
+        return (
+            <>
+                <Tabs selected={this.state.page} style={{ backgroundColor: 'white' }}
+                    selectedStyle={{ color: 'red' }} onSelect={el => this.setState({ page: el.props })}>
+                        [
+                            <Episodes name="first" />
+                            <Trailers name="second" />
+                        ]
+                    
+                </Tabs>
+                <View>
+                    {this.state.page}
+                </View>
+            </>
+        )
+    }
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        backgroundColor: 'transparent'
     },
 
 })
